@@ -20,7 +20,7 @@ class BooksController < ApplicationController
     if @book.save
       flash[:notice] = "Book was successfully created."
       redirect_to book_path(@book.id)
-    elser
+    else
       @books = Book.all
       render "index"
     end
@@ -35,7 +35,7 @@ class BooksController < ApplicationController
       render "edit"
     end
   end
-  
+
   def destroy
     book = Book.find(params[:id])
     book.destroy
@@ -47,4 +47,3 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :body)
   end
 end
-
